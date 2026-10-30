@@ -18,7 +18,8 @@
     life: 'https://www.smikbr.ru/node/12223',
     book: 'https://gvardiya.ru/books/zhizn-zamechatelnyh-lyudey/kerim-otarov',
     news: 'https://www.kbpravda.ru/node/2225',
-    poems: 'https://www.goryankakbr.ru/node/679'
+    poems: 'https://www.goryankakbr.ru/node/679',
+    report: 'https://www.kbpravda.ru/node/40920'
   };
   const sections = [
     {id:'life',title:'Жизнь',num:'01',sub:'Человек и время',desc:'Биография, судьба, хронология и места, с которыми была связана жизнь Керима Отарова.'},
@@ -123,8 +124,8 @@
       {path:'memory/places',title:'Киргизия',desc:'Годы депортации балкарского народа'},
       {path:'memory/places',title:'Нальчик',desc:'Возвращение и литературная жизнь'}
     ])+'<div class="portal-editorial"><span>УТОЧНЕНИЕ</span><p>Точные адреса мемориальных объектов публикуются только после документальной проверки.</p></div>');
-    if(kind==='family')return detailText(s,'Семья и окружение','ЛЮДИ РЯДОМ','Документы о семье, современниках и литературном круге требуют сверки с архивными свидетельствами.',
-      '<div class="portal-paper-panel"><span class="portal-overline">ФОРМИРУЕМ КОЛЛЕКЦИЮ</span><h2>Лица, голоса, <i>истории.</i></h2><p>В этом разделе будут семейные фотографии, воспоминания близких и материалы об окружении поэта. Непроверенные сведения не публикуются.</p>'+external(source.book,'Биографическое издание')+'</div>');
+    if(kind==='family')return detailText(s,'Семья и окружение','ЛЮДИ РЯДОМ','Семейные свидетельства позволяют понять, как наследие поэта продолжают сохранять и издавать.',
+      '<div class="portal-paper-panel"><span class="portal-overline">СВИДЕТЕЛЬСТВО / 2024</span><h2>Семья хранит<br><i>живое слово.</i></h2><p>Дочь поэта Римма Керимовна рассказала о начатом в 2012 году проекте издания его произведений на разных языках. В 2024 году были представлены новые сборники и библиографический указатель.</p>'+external(source.poems,'Интервью в газете «Горянка»')+'<p class="portal-family-footnote">Другие сведения о семье и окружении будут дополняться только после проверки источников.</p></div>');
     return notFound();
   }
   function mediaLanding(){
@@ -167,7 +168,7 @@
     if(kind==='voices')return detailText(s,'Воспоминания','ЛЮДИ И СВИДЕТЕЛЬСТВА','Место для воспоминаний современников, близких и читателей.',
       '<div class="portal-paper-panel"><span class="portal-overline">АРХИВ СОБИРАЕТСЯ</span><h2>Истории, которые<br><i>нужно услышать.</i></h2><p>До получения проверенных воспоминаний раздел не публикует вымышленных свидетельств.</p></div>');
     if(kind==='publications')return detailText(s,'Публикации','ИССЛЕДОВАНИЯ И СТАТЬИ','Подборка источников, с которых можно начать знакомство с биографией поэта.',
-      '<div class="portal-publication-list"><article><span>БИОГРАФИЯ</span><h3>Керим Отаров</h3><p>Материал портала СМИ Кабардино-Балкарии.</p>'+external(source.life,'Читать публикацию')+'</article><article><span>КНИГА</span><h3>Керим Отаров</h3><p>Биографическое издание серии «Жизнь замечательных людей».</p>'+external(source.book,'Об издании')+'</article><article><span>АРХИВНОЕ ФОТО</span><h3>Я свято верил…</h3><p>Публикация «Кабардино-Балкарской правды» с портретом поэта.</p>'+external(source.news,'Читать публикацию')+'</article></div>');
+      '<div class="portal-publication-list"><article><span>БИОГРАФИЯ</span><h3>Керим Отаров</h3><p>Материал портала СМИ Кабардино-Балкарии.</p>'+external(source.life,'Читать публикацию')+'</article><article><span>КНИГА</span><h3>Керим Отаров</h3><p>Биографическое издание серии «Жизнь замечательных людей».</p>'+external(source.book,'Об издании')+'</article><article><span>ПАМЯТЬ · 2024</span><h3>Пока огонь пылает в очаге</h3><p>Репортаж об Отаровских литературных чтениях и выставке архивных фотографий.</p>'+external(source.report,'Читать публикацию')+'</article><article><span>ПЕРЕВОДЫ · 2024</span><h3>Я горд своей дорогою земной…</h3><p>Публикация о переизданиях произведений на нескольких языках и работе семьи поэта.</p>'+external(source.poems,'Читать публикацию')+'</article></div>');
     return notFound();
   }
   function projectLanding(){
@@ -232,7 +233,7 @@
       doc.body.classList.remove('portal-mode');
       view.hidden=true;view.replaceChildren();
       doc.title='Керим Отаров — литературное наследие';
-      requestAnimationFrame(()=>window.scrollTo({top:fromHistory?homeScroll:0,behavior:'instant'}));
+      requestAnimationFrame(()=>{const legacy=!isPortal&&/^#(home|library|voice|about|dictionary|events)$/.test(location.hash);const target=legacy?doc.querySelector(location.hash):null;if(target)target.scrollIntoView({behavior:'instant'});else window.scrollTo({top:fromHistory?homeScroll:0,behavior:'instant'});});
       setNavigation('');
       return;
     }
