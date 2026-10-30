@@ -153,3 +153,57 @@ test('capture desktop and mobile review of the main scenes',async({page},testInf
  await page.goto('/#/works/roads');
  await page.screenshot({path:prefix+'-reader.png',fullPage:true});
 });
+
+
+test('all action icons use the vendored official Lucide library',async({page})=>{
+  const routes=['/','/#/works','/#/works/roads','/#/media','/#/memory','/#/projects','/#/events'];
+  for (const route of routes){
+    await page.goto(route);
+    const icons=page.locator('main svg.icon, header svg, #site-menu svg, #search-panel svg');
+    expect(await icons.count(),route+' must contain icon elements').toBeGreaterThan(3);
+    const audit=await icons.evaluateAll(nodes=>nodes.map(svg=>({
+      hasUse:svg.querySelector('use')?.getAttribute('href')?.startsWith('./assets/lucide-sprite.svg#')||false,
+      hasHanddrawnPath:!!svg.querySelector('path, circle, rect, line, polyline'),
+      source:svg.querySelector('use')?.getAttribute('href')
+    })));
+    expect(audit.filter(i=>!i.hasUse || i.hasHanddrawnPath),route+' must contain no self-drawn icon markup').toEqual([]);
+  }
+  const response=await page.request.get('/assets/lucide-sprite.svg');
+  expect(response.ok()).toBeTruthy();
+  const source=await response.text();
+  for(const name of ['arrow-up-right','search','menu','x','book-open','volume-2','calendar-days','bookmark','check','feather']){
+    expect(source).toContain('<symbol id="'+name+'"');
+  }
+  expect(source).toContain('Lucide');
+});
+
+test('menu icon changes state using the Lucide library',async({page})=>{
+  await page.goto('/');
+  const icon=page.locator('#menu-trigger svg use');
+  await expect(icon).toHaveAttribute('href','./assets/lucide-sprite.svg#menu');
+  await page.getByRole('button',{name:'Открыть меню'}).click();
+  await expect(icon).toHaveAttribute('href','./assets/lucide-sprite.svg#x');
+  await page.getByRole('button',{name:'Закрыть меню'}).click();
+  await expect(icon).toHaveAttribute('href','./assets/lucide-sprite.svg#menu');
+});
+
+test('award-inspired kinetic scene responds to scroll and is restrained for reduced motion',async({page})=>{
+  await page.goto('/');
+  await expect(page.locator('.scene-progress')).toBeVisible();
+  await page.evaluate(()=>scrollTo(0,document.documentElement.scrollHeight/2));
+  await expect.poll(()=>page.locator('.scene-progress').evaluate(el=>getComputedStyle(el).transform)).not.toBe('none');
+  await page.goto('/#/works');
+  await expect(page.locator('.scene-progress')).toBeVisible();
+  await page.emulateMedia({reducedMotion:'reduce'});
+  await page.goto('/');
+  await expect(page.locator('.hero')).toHaveClass(/motion-reduced/);
+});
+
+test('Lucide icons are locally hosted, no runtime dependency on an icon CDN',async({page})=>{
+  const externals=[];
+  page.on('request',req=>{ if(/(?:unpkg\.com|cdn\.jsdelivr\.net|fonts\.googleapis\.com)/.test(req.url())) externals.push(req.url()); });
+  await page.goto('/');
+  await page.getByRole('button',{name:'Открыть меню'}).click();
+  await page.locator('#site-menu a[href="#/media"]').click();
+  expect(externals).toEqual([]);
+});
