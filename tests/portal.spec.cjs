@@ -137,3 +137,19 @@ test('desktop magnetic control reacts to pointer movement',async({page,isMobile}
  await page.mouse.move(5,5);
  await expect.poll(()=>target.evaluate(el=>getComputedStyle(el).transform)).toBe('none');
 });
+
+test('capture desktop and mobile review of the main scenes',async({page},testInfo)=>{
+ const fs=require('node:fs');
+ fs.mkdirSync('test-results/visual',{recursive:true});
+ const prefix='test-results/visual/'+testInfo.project.name;
+ await page.goto('/');
+ await page.screenshot({path:prefix+'-home.png',fullPage:true});
+ await page.getByRole('button',{name:'Открыть меню'}).click();
+ await expect(page.locator('#site-menu')).toHaveClass(/is-open/);
+ await page.screenshot({path:prefix+'-menu.png'});
+ await page.getByRole('button',{name:'Закрыть меню'}).click();
+ await page.goto('/#/works');
+ await page.screenshot({path:prefix+'-library.png',fullPage:true});
+ await page.goto('/#/works/roads');
+ await page.screenshot({path:prefix+'-reader.png',fullPage:true});
+});

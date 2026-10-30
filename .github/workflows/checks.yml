@@ -21,14 +21,21 @@ jobs:
         with:
           node-version: '22'
       - name: Validate JavaScript syntax
-        run: node --check app.js && node --check portal.js
+        run: node --check site.js
       - name: Install test dependencies
         run: npm install --no-audit --no-fund
       - name: Install browser
         run: npx playwright install --with-deps chromium
-      - name: Test desktop, mobile, navigation and reader
+      - name: Test desktop and mobile user journeys
         run: npm test
-      - name: Upload failure report
+      - name: Upload desktop and mobile visual review
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: visual-review
+          path: test-results/visual/
+          if-no-files-found: ignore
+      - name: Upload failure diagnostics
         if: failure()
         uses: actions/upload-artifact@v4
         with:
