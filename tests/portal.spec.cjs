@@ -207,3 +207,11 @@ test('Lucide icons are locally hosted, no runtime dependency on an icon CDN',asy
   await page.locator('#site-menu a[href="#/media"]').click();
   expect(externals).toEqual([]);
 });
+
+test('every content action button uses a Lucide icon with readable text',async({page})=>{
+ for(const route of ['/#/life','/#/works','/#/works/roads','/#/projects','/#/events']){
+  await page.goto(route);
+  const missing=await page.locator('main button').evaluateAll(buttons=>buttons.filter(b=>!b.querySelector('svg.icon use')).map(b=>b.outerHTML.slice(0,220)));
+  expect(missing,'No text-only action buttons on '+route).toEqual([]);
+ }
+});
