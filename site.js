@@ -60,7 +60,7 @@ const paths={
  bookmark:'<path d="M6 4h12v17l-6-4-6 4V4Z"/>',
  check:'<path d="m4 12 5 5L20 6"/>',
  close:'<path d="M5 5 19 19M19 5 5 19"/>',
- more:'<circle cx="5" cy="12" r="1"/><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/>',
+ search:'<circle cx="10.7" cy="10.7" r="6.6"/><path d="m15.8 15.8 5 5"/>',
  clock:'<circle cx="12" cy="12" r="9"/><path d="M12 7v6l4 2"/>',
  quote:'<path d="M10 5C6 7 5 10 5 15h5v5H3v-5c0-7 3-10 7-12Zm11 0c-4 2-5 5-5 10h5v5h-7v-5c0-7 3-10 7-12Z"/>'
 };
@@ -134,7 +134,7 @@ function worksPage(){
  return '<div class="page page-works">'+heading('works','Стихи, сборники, переводы и параллельное чтение')+
  '<div class="content-wrap works-main"><div class="works-controls"><span class="eyebrow">БИБЛИОТЕКА / <b id="work-count">04</b></span>'+
  '<div class="pills" role="group" aria-label="Тип произведений"><button class="chosen" data-filter="all" aria-pressed="true">Все</button><button data-filter="poetry" aria-pressed="false">Поэзия</button><button data-filter="translation" aria-pressed="false">Переводы</button></div>'+
- '<label class="work-search"><span class="visually-hidden">Поиск произведения</span>'+ico('more')+'<input id="work-query" type="search" placeholder="Название произведения"></label></div>'+
+ '<label class="work-search"><span class="visually-hidden">Поиск произведения</span>'+ico('search')+'<input id="work-query" type="search" placeholder="Название произведения"></label></div>'+
  '<div class="works-grid" id="works-grid">'+works.map(card).join('')+'</div>'+
  '<p id="works-empty" class="works-empty" hidden>По вашему запросу произведений не найдено.</p>'+
  '<p class="editorial-disclaimer">Электронный архив пополняется: полные тексты доступны только после проверки и согласования публикации.</p></div></div>';
@@ -345,6 +345,15 @@ function filterWorks(){
 }
 function bindVisuals(){
  if(fine.matches&&!reduce.matches){
+   $('[data-magnetic]').forEach(el=>{
+     el.addEventListener('pointermove',e=>{
+       const r=el.getBoundingClientRect();
+       const x=((e.clientX-r.left)/r.width-.5)*13;
+       const y=((e.clientY-r.top)/r.height-.5)*13;
+       el.style.transform='translate3d('+x.toFixed(1)+'px,'+y.toFixed(1)+'px,0)';
+     },{passive:true});
+     el.addEventListener('pointerleave',()=>el.style.removeProperty('transform'));
+   });
    const hero=$('.hero');
    if(hero)hero.addEventListener('pointermove',e=>{
      const r=hero.getBoundingClientRect();const x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;
