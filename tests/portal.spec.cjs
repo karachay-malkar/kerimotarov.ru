@@ -105,3 +105,23 @@ test('no mobile overflow and menu accessible',async({page})=>{
    expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+2),'No mobile horizontal overflow on '+path).toBe(true);
  }
 });
+
+test('primary navigation uses the same names as the full menu',async({page})=>{
+ await page.goto('/');
+ const names=await page.locator('.toplinks a').allTextContents();
+ expect(names).toEqual(['Жизнь','Творчество','Медиа']);
+ await page.goto('/#/sources');
+ await expect(page.locator('main')).toContainText('Источники');
+ await expect(page.locator('main a[href^="https://"]')).toHaveCount(5);
+});
+test('interaction layer is not just a decorative icon',async({page})=>{
+ await page.goto('/');
+ await page.getByRole('button',{name:'Открыть меню'}).click();
+ await expect(page.locator('#site-menu')).toHaveCSS('pointer-events','auto');
+ await expect(page.locator('#site-menu')).toHaveClass(/is-open/);
+ await page.getByRole('button',{name:'Закрыть меню'}).click();
+ await page.goto('/#/works');
+ const card=page.locator('.work-card').first();
+ await card.hover();
+ await expect(card.locator('.cover-visual')).toHaveCSS('transform',/matrix/);
+});
