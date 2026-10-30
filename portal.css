@@ -366,3 +366,6 @@ a:hover>.portal-arrow,.portal-chapter:hover .portal-arrow{transform:translate(4p
 .portal-publication-list{grid-template-columns:repeat(4,minmax(0,1fr))}
 @media(max-width:1080px){.portal-publication-list{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:650px){.portal-publication-list{grid-template-columns:1fr}}
+
+/* Shared-element transition: book cover becomes the destination cover. */
+.portal-work-cover .portal-cover-large{view-transition-name:selected-book}
