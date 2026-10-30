@@ -345,7 +345,7 @@ function filterWorks(){
 }
 function bindVisuals(){
  if(fine.matches&&!reduce.matches){
-   $('[data-magnetic]').forEach(el=>{
+   $$('[data-magnetic]').forEach(el=>{
      el.addEventListener('pointermove',e=>{
        const r=el.getBoundingClientRect();
        const x=((e.clientX-r.left)/r.width-.5)*13;
