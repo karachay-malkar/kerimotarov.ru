@@ -612,3 +612,27 @@ main:focus{outline:none}
  .scene-progress {transition:none!important}
  ::view-transition-new(root),::view-transition-old(root){animation-duration:0s!important}
 }
+
+/* Every interactive selector now carries an official Lucide glyph. */
+.pills button,.time-chip,.word-selector button {
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+}
+.pills button>.icon,.time-chip>.icon,.word-selector button>.icon {
+  width:14px;
+  height:14px;
+  flex:0 0 auto;
+  stroke-width:1.5;
+}
+.time-chip>.icon{opacity:.38}
+.time-chip.active>.icon{opacity:.82}
+.word-selector button>.icon{width:12px;height:12px;opacity:.57}
+@media(max-width:600px){
+  .pills button{gap:5px}
+  .pills button>.icon{width:12px;height:12px}
+  .time-chip{gap:5px}
+  .time-chip>.icon{width:12px;height:12px}
+  .word-selector button{gap:5px}
+}
