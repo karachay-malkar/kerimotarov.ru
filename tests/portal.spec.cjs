@@ -125,3 +125,15 @@ test('interaction layer is not just a decorative icon',async({page})=>{
  await card.hover();
  await expect(card.locator('.cover-visual')).toHaveCSS('transform',/matrix/);
 });
+
+test('desktop magnetic control reacts to pointer movement',async({page,isMobile})=>{
+ test.skip(isMobile,'Touch screens do not have hover interactions');
+ await page.goto('/');
+ const target=page.locator('.hero-side-action');
+ const box=await target.boundingBox();
+ expect(box).toBeTruthy();
+ await page.mouse.move(box.x+box.width*.78,box.y+box.height*.3);
+ await expect.poll(()=>target.evaluate(el=>getComputedStyle(el).transform)).not.toBe('none');
+ await page.mouse.move(5,5);
+ await expect.poll(()=>target.evaluate(el=>getComputedStyle(el).transform)).toBe('none');
+});
