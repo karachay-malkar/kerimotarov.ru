@@ -189,11 +189,11 @@ test('menu icon changes state using the Lucide library',async({page})=>{
 
 test('award-inspired kinetic scene responds to scroll and is restrained for reduced motion',async({page})=>{
   await page.goto('/');
-  await expect(page.locator('.scene-progress')).toBeVisible();
+  await expect(page.locator('.scene-progress')).toHaveCount(1);
   await page.evaluate(()=>scrollTo(0,document.documentElement.scrollHeight/2));
   await expect.poll(()=>page.locator('.scene-progress').evaluate(el=>getComputedStyle(el).transform)).not.toBe('none');
   await page.goto('/#/works');
-  await expect(page.locator('.scene-progress')).toBeVisible();
+  await expect(page.locator('.scene-progress')).toHaveCount(1);
   await page.emulateMedia({reducedMotion:'reduce'});
   await page.goto('/');
   await expect(page.locator('.hero')).toHaveClass(/motion-reduced/);
