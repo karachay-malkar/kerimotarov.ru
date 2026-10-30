@@ -23,6 +23,7 @@ test('direct link to reader, reader controls and local notes', async ({page}) =>
   await page.goto('/#/works/roads');
   await expect(page.locator('#portal-view h1')).toContainText('Сокъур');
   await expect(page.locator('.portal-translation')).toBeVisible();
+  expect(await page.locator('.portal-cover-large').evaluate(el=>getComputedStyle(el).viewTransitionName)).toBe('selected-book');
   await page.locator('#portal-parallel').click();
   await expect(page.locator('.portal-original')).toBeHidden();
   await page.locator('#portal-parallel').click();
