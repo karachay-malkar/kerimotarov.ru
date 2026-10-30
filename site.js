@@ -228,6 +228,18 @@ function eventDetail(id){
  '<section class="content-wrap detail-content">'+breadcrumb('events','Пример')+
  '<div class="quiet-panel">'+kicker('—','ДЕМОНСТРАЦИЯ / НЕ АНОНС')+'<h2>Литературный<br><i>вечер.</i></h2><p>Страница показывает структуру будущего мероприятия. Дата, место и организатор не указаны, поскольку реальное событие не объявлено.</p>'+action('events','Вернуться к афише')+'</div></section></div>';
 }
+function sourcesPage(){
+ const refs=[
+ ['Биография','Портал СМИ Кабардино-Балкарии',sources.life],
+ ['Стихотворение «Сокъур болур эдим»','Эльбрусоид · оригинал',sources.poem],
+ ['Архивный портрет','Кабардино-Балкарская правда',sources.portrait],
+ ['Наследие и новые издания','Газета «Горянка»',sources.press],
+ ['Отаровские литературные чтения','Кабардино-Балкарская правда',sources.readings]
+ ];
+ return '<div class="page sources-page"><div class="page-head"><div class="page-head-top">'+kicker('07','ОБ АРХИВЕ')+'</div><div class="page-heading"><div><h1 class="page-title">Источники</h1><p>Материалы, на которые опирается цифровой архив.</p></div></div></div>'+
+ '<div class="content-wrap detail-content"><div class="quiet-panel sources-note"><h2>Подлинное.<br><i>Бережно.</i></h2><p>Мы отделяем подтверждённые документы от материалов, которые ещё готовятся к публикации. Полные тексты, аудио и воспоминания появятся после сверки и проверки прав.</p></div>'+
+ '<div class="publication-list sources-list">'+refs.map(([title,label,url],i)=>'<a class="publication" href="'+url+'" target="_blank" rel="noopener noreferrer"><span>0'+(i+1)+'</span><strong>'+title+'</strong><small>'+label+'</small>'+ico('arrow')+'</a>').join('')+'</div></div></div>';
+}
 function missing(){return '<div class="page">'+
  '<section class="content-wrap missing"><span class="eyebrow">404 / НЕ НАЙДЕНО</span><h1>Страница ещё<br>не написана.</h1>'+action('','На главную')+'</section></div>';}
 function path(){try{return decodeURIComponent(location.hash.replace(/^#\/?/,'')).replace(/\/+$/,'').split('?')[0];}catch{return '404';}}
@@ -241,6 +253,7 @@ function route(){
  case 'memory':return sub?memoryDetail(sub):memoryPage();
  case 'projects':return sub?projectDetail(sub):projectPage();
  case 'events':return sub?eventDetail(sub):eventsPage();
+ case 'sources':return sourcesPage();
  default:return missing();
  }
 }
@@ -365,7 +378,7 @@ document.addEventListener('click',e=>{
    if(a.dataset.action==='close-search')closeSearch();
    if(a.dataset.action==='month-prev'){month.setMonth(month.getMonth()-1);updateMonth();}
    if(a.dataset.action==='month-next'){month.setMonth(month.getMonth()+1);updateMonth();}
-   if(a.dataset.action==='sources'){toast('Источники материалов перечислены в репозитории: SOURCES.md');}
+
    if(a.dataset.action==='share'){
      if(navigator.clipboard?.writeText)navigator.clipboard.writeText(location.href).then(()=>toast('Ссылка скопирована')).catch(()=>toast('Скопируйте адрес из браузера'));
      else toast('Скопируйте адрес из браузера');
