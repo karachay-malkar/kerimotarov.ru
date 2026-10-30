@@ -525,3 +525,90 @@ main:focus{outline:none}
  .line-reveal>span{transform:none;animation:none}
  ::view-transition-old(root),::view-transition-new(root),::view-transition-old(cover-flight),::view-transition-new(cover-flight){animation:none!important}
 }
+
+
+/* Lucide is a real open-source icon library (assets/lucide-sprite.svg).
+   Keep icons visually consistent across navigation, reading, media and actions. */
+.icon, .topbar .icon, .menu-list .icon, .search-panel .icon {
+  fill:none;
+  stroke:currentColor;
+  stroke-width:1.6;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+  vector-effect:non-scaling-stroke;
+}
+.menu-mark>.icon {stroke-width:1.7;transform-origin:center;transition:transform .5s var(--ease)}
+.menu-open .menu-mark>.icon {transform:rotate(90deg)}
+.menu-list a>.icon {margin-left:auto;color:#b9a78e;stroke-width:1.5;transition:transform .45s var(--ease)}
+.menu-list a:hover>.icon {transform:translate(6px,-6px) rotate(8deg)}
+.round-icon .icon {stroke-width:1.6}
+.search-card .icon {stroke-width:1.6}
+
+/* Lusion v3-inspired 2.5D scene behavior: subtle inertia and scroll depth, no WebGL tax. */
+.scene-progress {
+  position:fixed;
+  height:2px;
+  left:0;right:0;top:0;
+  z-index:160;
+  transform-origin:0 50%;
+  transform:scaleX(0);
+  background:#d5b783;
+  pointer-events:none;
+  box-shadow:0 0 14px rgba(213,183,131,.35);
+}
+.hero-photo {
+  transform:translate3d(var(--mx,0px),calc(var(--my,0px) + var(--scroll-lift,0px)),0)
+            scale(var(--depth-scale,1));
+  transition:none;
+  will-change:transform;
+}
+.hero h1 {transform:translate3d(0,var(--title-shift,0px),0);will-change:transform}
+.hero .hero-halo {filter:saturate(1.07)}
+.cover-visual::before{
+ background:
+  linear-gradient(90deg,#0004,transparent 3%,#fff2 3.4%,transparent 4.5%),
+  radial-gradient(circle at var(--glow-x,50%) var(--glow-y,50%),rgba(255,255,255,.22),transparent 62%);
+}
+.menu-art img {transform:translate3d(0,var(--menu-depth,0px),0) scale(1.13);transition:transform 1.3s var(--ease)}
+.site-menu.is-open .menu-art img {transform:translate3d(0,var(--menu-depth,0px),0) scale(1.03)}
+.menu-art .menu-chapter-number {
+ position:absolute;
+ z-index:4;
+ left:5%;
+ bottom:5%;
+ font:400 clamp(170px,26vw,430px)/.7 var(--serif);
+ letter-spacing:-.09em;
+ color:#e1caa4;
+ opacity:.16;
+ pointer-events:none;
+ user-select:none;
+ transform:translate3d(0,0,0);
+ transition:transform .7s var(--ease);
+}
+.menu-art:after {z-index:2}
+.menu-art img {position:relative;z-index:1}
+/* Expanding reveal keeps the user's clicked point as the scene origin.
+   Navigation still works without View Transitions API. */
+::view-transition-old(root) {animation:old-scene .45s var(--ease) both}
+::view-transition-new(root) {animation:portal-iris .75s var(--ease) both}
+@keyframes portal-iris {
+  from {clip-path:circle(0 at var(--reveal-x,50%) var(--reveal-y,50%));opacity:.96}
+  to {clip-path:circle(160vmax at var(--reveal-x,50%) var(--reveal-y,50%));opacity:1}
+}
+@media(hover:none), (pointer:coarse) {
+ .menu-art .menu-chapter-number {opacity:.12}
+ .hero-photo {will-change:auto}
+ .hero h1 {will-change:auto}
+}
+@media(max-width:600px){
+ .hero-photo {transform:translate3d(0,var(--scroll-lift,0px),0) scale(var(--depth-scale,1))}
+ .menu-chapter-number {display:none}
+ .scene-progress {height:2px}
+}
+@media(prefers-reduced-motion:reduce){
+ .hero-photo,.hero h1,.menu-art img,.site-menu.is-open .menu-art img {
+   transform:none !important;will-change:auto !important;
+ }
+ .scene-progress {transition:none!important}
+ ::view-transition-new(root),::view-transition-old(root){animation-duration:0s!important}
+}
