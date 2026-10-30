@@ -43,9 +43,9 @@ h1,h2,h3,.serif{font-family:var(--serif)}
 .menu-label{font-size:9px;letter-spacing:.18em;min-width:45px;text-align:right}
 .menu-trigger .round-icon{width:50px;height:50px;border-color:#e8e2cf70}
 .menu-mark>svg{width:22px;height:22px;transition:transform .4s var(--ease)}
-.menu-mark path{transform-origin:12px 12px;transition:transform .5s var(--ease)}
-.menu-open .menu-mark path.line-top{transform:translateY(3px) rotate(45deg)}
-.menu-open .menu-mark path.line-bottom{transform:translateY(-3px) rotate(-45deg)}
+
+
+
 .menu-open .menu-mark{background:#decba8;color:#11232d;border-color:#decba8}
 .menu-trigger:hover .menu-mark{background:#decba8;color:#102331}
 .site-menu{position:fixed;inset:0;z-index:90;background:#101f2a;color:#f0ece3;overflow-y:auto;overscroll-behavior:contain;clip-path:inset(0 0 100% 0);opacity:0;visibility:hidden;pointer-events:none;transition:clip-path .8s var(--ease),opacity .65s ease,visibility .8s}
