@@ -103,7 +103,7 @@ function life(){
  '<div class="life-copy">'+kicker('01','БИОГРАФИЯ')+
  '<h2>Судьба народа.<br><i>Голос человека.</i></h2>'+
  '<p>Поэт прошёл через войну, изгнание и возвращение. Родная земля и родной язык стали основой его поэтического мира.</p>'+
- '<div class="timeline-min">'+timeline.map(([year,title,description])=>'<button class="time-chip'+(year==='1912'?' active':'')+'" data-time="'+year+'" aria-pressed="'+(year==='1912')+'">'+year+'</button>').join('')+'</div>'+
+ '<div class="timeline-min">'+timeline.map(([year,title,description])=>'<button class="time-chip'+(year==='1912'?' active':'')+'" data-time="'+year+'" aria-pressed="'+(year==='1912')+'">'+year+ico('clock')+'</button>').join('')+'</div>'+
  '<div class="time-detail" aria-live="polite"><span id="time-year">1912</span><div><h3 id="time-title">Гюрхожан</h3><p id="time-description">Рождение в балкарском ауле у подножия Эльбруса.</p></div></div>'+
  '<div class="detail-links">'+action('life/chronology','Все даты')+source(sources.life,'Источник биографии')+'</div></div></section></div>';
 }
@@ -126,7 +126,7 @@ function card(w,index){
 function worksPage(){
  return '<div class="page page-works">'+heading('works','Стихи, сборники, переводы и параллельное чтение')+
  '<div class="content-wrap works-main"><div class="works-controls"><span class="eyebrow">БИБЛИОТЕКА / <b id="work-count">04</b></span>'+
- '<div class="pills" role="group" aria-label="Тип произведений"><button class="chosen" data-filter="all" aria-pressed="true">Все</button><button data-filter="poetry" aria-pressed="false">Поэзия</button><button data-filter="translation" aria-pressed="false">Переводы</button></div>'+
+ '<div class="pills" role="group" aria-label="Тип произведений"><button class="chosen" data-filter="all" aria-pressed="true">'+ico('layers')+'Все</button><button data-filter="poetry" aria-pressed="false">'+ico('feather')+'Поэзия</button><button data-filter="translation" aria-pressed="false">'+ico('book')+'Переводы</button></div>'+
  '<label class="work-search"><span class="visually-hidden">Поиск произведения</span>'+ico('search')+'<input id="work-query" type="search" placeholder="Название произведения"></label></div>'+
  '<div class="works-grid" id="works-grid">'+works.map(card).join('')+'</div>'+
  '<p id="works-empty" class="works-empty" hidden>По вашему запросу произведений не найдено.</p>'+
@@ -197,7 +197,7 @@ function projectPage(){
  return '<div class="page">'+heading('projects','Параллельное чтение и родной язык')+
  '<section class="content-wrap project-layout"><div class="project-intro">'+kicker('01','ЯЗЫК ПОЭЗИИ')+'<h2>Одно слово.<br><i>Целый мир.</i></h2><p>Небольшой словарь помогает понять текст на родном языке. Значения уточняются в контексте стихотворений.</p>'+action('works/roads','Читать на двух языках')+'</div>'+
  '<div class="word-lab"><div class="word-lab-top"><span>Словарь поэзии</span>'+ico('layers')+'</div><div class="word-current"><h3 id="word-current" lang="krc">Тау</h3><p id="word-translation">Гора</p><small id="word-comment">Образ горного мира.</small></div>'+
- '<div class="word-selector">'+words.map(([w],i)=>'<button type="button" data-word="'+i+'" class="'+(i===0?'selected':'')+'" aria-pressed="'+(i===0)+'">'+w+'</button>').join('')+'</div></div>'+
+ '<div class="word-selector">'+words.map(([w],i)=>'<button type="button" data-word="'+i+'" class="'+(i===0?'selected':'')+'" aria-pressed="'+(i===0)+'">'+w+ico('chevron')+'</button>').join('')+'</div></div>'+
  '</section></div>';
 }
 function projectDetail(kind){
