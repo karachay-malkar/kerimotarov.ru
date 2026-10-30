@@ -281,6 +281,11 @@ function paint(force=false){
 let pendingCover=null;
 function openPath(href,origin){
  if(href===location.hash){closeMenu();closeSearch();return;}
+ const rect=origin?.getBoundingClientRect();
+ const clickX=rect?rect.left+rect.width/2:innerWidth/2;
+ const clickY=rect?rect.top+rect.height/2:innerHeight/2;
+ document.documentElement.style.setProperty('--reveal-x',((clickX/innerWidth)*100).toFixed(2)+'%');
+ document.documentElement.style.setProperty('--reveal-y',((clickY/innerHeight)*100).toFixed(2)+'%');
  const card=origin?.closest('.work-card');
  if(card && href.startsWith('#/works/')){pendingCover=card.querySelector('.cover-visual');pendingCover.style.viewTransitionName='cover-flight';}
  closeMenu();closeSearch();
