@@ -20,32 +20,33 @@
   <nav class="toplinks" aria-label="Главные разделы"><a href="#/life" data-nav="life">Жизнь</a><a href="#/works" data-nav="works">Творчество</a><a href="#/media" data-nav="media">Медиа</a></nav>
   <div class="top-actions">
     <button type="button" class="round-icon top-search" data-action="search" aria-label="Поиск" title="Поиск (Ctrl+K)">
-      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.7" cy="10.7" r="6.6"/><path d="m15.8 15.8 5 5"/></svg>
+      <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="./assets/lucide-sprite.svg#search"></use></svg>
     </button>
     <button type="button" class="menu-trigger" id="menu-trigger" data-action="menu" aria-label="Открыть меню" aria-expanded="false" aria-controls="site-menu">
       <span class="menu-label">МЕНЮ</span>
-      <span class="menu-mark round-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path class="line-top" d="M4 9H20"/><path class="line-bottom" d="M4 15H20"/></svg></span>
+      <span class="menu-mark round-icon"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="./assets/lucide-sprite.svg#menu"></use></svg></span>
     </button>
   </div>
 </header>
+<div class="scene-progress" aria-hidden="true"></div>
 <div id="site-menu" class="site-menu" aria-hidden="true" inert>
-  <div class="menu-art" aria-hidden="true"><img src="./assets/otarov-portrait-kbp.jpg" alt=""></div>
+  <div class="menu-art" aria-hidden="true"><span class="menu-chapter-number" id="menu-chapter-number">01</span><img src="./assets/otarov-portrait-kbp.jpg" alt=""></div>
   <div class="menu-inner">
     <p class="menu-kicker">КЕРИМ ОТАРОВ / СОДЕРЖАНИЕ</p>
     <nav class="menu-list" aria-label="Все разделы">
-      <a href="#/life" data-link="life"><span>01</span><strong>Жизнь</strong><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 19 19 5M8 5h11v11"/></svg></a>
-      <a href="#/works" data-link="works"><span>02</span><strong>Творчество</strong><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 19 19 5M8 5h11v11"/></svg></a>
-      <a href="#/media" data-link="media"><span>03</span><strong>Медиа</strong><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 19 19 5M8 5h11v11"/></svg></a>
-      <a href="#/memory" data-link="memory"><span>04</span><strong>Память</strong><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 19 19 5M8 5h11v11"/></svg></a>
-      <a href="#/projects" data-link="projects"><span>05</span><strong>Проекты</strong><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 19 19 5M8 5h11v11"/></svg></a>
-      <a href="#/events" data-link="events"><span>06</span><strong>Афиша</strong><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 19 19 5M8 5h11v11"/></svg></a>
+      <a href="#/life" data-link="life"><span>01</span><strong>Жизнь</strong><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="./assets/lucide-sprite.svg#arrow-up-right"></use></svg></a>
+      <a href="#/works" data-link="works"><span>02</span><strong>Творчество</strong><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="./assets/lucide-sprite.svg#arrow-up-right"></use></svg></a>
+      <a href="#/media" data-link="media"><span>03</span><strong>Медиа</strong><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="./assets/lucide-sprite.svg#arrow-up-right"></use></svg></a>
+      <a href="#/memory" data-link="memory"><span>04</span><strong>Память</strong><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="./assets/lucide-sprite.svg#arrow-up-right"></use></svg></a>
+      <a href="#/projects" data-link="projects"><span>05</span><strong>Проекты</strong><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="./assets/lucide-sprite.svg#arrow-up-right"></use></svg></a>
+      <a href="#/events" data-link="events"><span>06</span><strong>Афиша</strong><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="./assets/lucide-sprite.svg#arrow-up-right"></use></svg></a>
     </nav>
     <p class="menu-foot">ОТАРЛАНЫ КЕРИМ · 1912—1974</p>
   </div>
 </div>
 <div id="search-panel" class="search-panel" aria-hidden="true" inert>
   <div class="search-card" role="dialog" aria-modal="true" aria-label="Поиск по литературному порталу">
-    <div class="search-top"><span>ПОИСК ПО НАСЛЕДИЮ</span><button type="button" class="round-icon" data-action="close-search" aria-label="Закрыть поиск"><svg viewBox="0 0 24 24"><path d="M5 5l14 14M19 5 5 19"/></svg></button></div>
+    <div class="search-top"><span>ПОИСК ПО НАСЛЕДИЮ</span><button type="button" class="round-icon" data-action="close-search" aria-label="Закрыть поиск"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="./assets/lucide-sprite.svg#x"></use></svg></button></div>
     <label class="visually-hidden" for="global-search">Поиск</label>
     <input id="global-search" type="search" placeholder="Произведение, тема, имя…" autocomplete="off">
     <div id="search-results" class="search-results" aria-live="polite"></div>
