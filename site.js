@@ -203,7 +203,7 @@ function memoryDetail(kind){
 function projectPage(){
  return '<div class="page">'+heading('projects','Параллельное чтение и родной язык')+
  '<section class="content-wrap project-layout"><div class="project-intro">'+kicker('01','ЯЗЫК ПОЭЗИИ')+'<h2>Одно слово.<br><i>Целый мир.</i></h2><p>Небольшой словарь помогает понять текст на родном языке. Значения уточняются в контексте стихотворений.</p>'+action('works/roads','Читать на двух языках')+'</div>'+
- '<div class="word-lab"><div class="word-lab-top"><span>ИНТЕРАКТИВНЫЙ СЛОВАРЬ</span>'+ico('layers')+'</div><div class="word-current"><h3 id="word-current" lang="krc">Тау</h3><p id="word-translation">Гора</p><small id="word-comment">Образ горного мира.</small></div>'+
+ '<div class="word-lab"><div class="word-lab-top"><span>Словарь поэзии</span>'+ico('layers')+'</div><div class="word-current"><h3 id="word-current" lang="krc">Тау</h3><p id="word-translation">Гора</p><small id="word-comment">Образ горного мира.</small></div>'+
  '<div class="word-selector">'+words.map(([w],i)=>'<button type="button" data-word="'+i+'" class="'+(i===0?'selected':'')+'" aria-pressed="'+(i===0)+'">'+w+'</button>').join('')+'</div></div>'+
  '</section></div>';
 }
