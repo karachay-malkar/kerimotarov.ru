@@ -1,73 +1,63 @@
 <!doctype html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#101e2a">
-  <title>Керим Отаров — живое слово</title>
-  <meta name="description" content="Поэзия, голос и судьба Керима Отарова. Цифровой литературный архив.">
-  <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml">
-  <link rel="preload" href="./assets/serif.ttf" as="font" type="font/ttf" crossorigin>
-  <link rel="stylesheet" href="./assets/fonts.css"><link rel="stylesheet" href="./style.css"><link rel="stylesheet" href="./portal.css">
-  <script src="./app.js" defer></script><script src="./portal.js" defer></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#101c26">
+<title>Керим Отаров — литературное наследие</title>
+<meta name="description" content="Литературное наследие Керима Отарова: поэзия, переводы, биография и архив.">
+<link rel="icon" href="./assets/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="./assets/serif.ttf" as="font" type="font/ttf" crossorigin>
+<link rel="preload" href="./assets/otarov-portrait-kbp.jpg" as="image" fetchpriority="high">
+<link rel="stylesheet" href="./assets/fonts.css">
+<link rel="stylesheet" href="./site.css">
+<script src="./site.js" defer></script>
 </head>
 <body>
-  <a class="skip-link" href="#library">К содержимому</a>
-  <header class="header" id="header">
-    <a class="brand" href="#/" aria-label="Керим Отаров — на главную"><span class="monogram">К<span>О</span></span><span class="brand-caption">Литературное<br>наследие</span></a>
-    <nav class="desktop-nav" aria-label="Основная навигация"><a href="#/life">Жизнь</a><a href="#/works">Творчество</a><a href="#/media">Медиа</a><a href="#/memory">Память</a><a href="#/projects">Проекты</a><a href="#/events">Афиша</a></nav>
-    <div class="header-actions"><button class="icon-button" id="search-open" aria-label="Поиск по библиотеке"><svg viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/></svg></button><span class="language">РУ</span><button class="icon-button menu-button" id="menu-toggle" aria-expanded="false" aria-controls="mobile-nav" aria-label="Открыть меню"><svg viewBox="0 0 24 24"><path d="M3 8h18M3 16h18"/></svg></button></div>
-  </header>
-  <nav class="mobile-nav" id="mobile-nav" aria-label="Меню разделов" inert><a href="#/life">Жизнь</a><a href="#/works">Творчество</a><a href="#/media">Медиа</a><a href="#/memory">Память</a><a href="#/projects">Проекты</a><a href="#/events">Афиша</a></nav>
-  <main>
-    <section class="hero-scroll" id="home" aria-label="Керим Отаров. Литературный портрет">
-      <div class="hero-stage">
-        <div class="portrait-wrap"><img class="hero-portrait" src="./assets/otarov-portrait-kbp.jpg" alt="Архивный портрет Керима Отарова" fetchpriority="high"><div class="portrait-shade"></div></div>
-        <div class="hero-grain" aria-hidden="true"></div>
-        <div class="hero-content"><p class="eyebrow hero-eyebrow"><span class="small-line"></span> НАРОДНЫЙ ПОЭТ БАЛКАРИИ</p><p class="native-name" lang="krc">Отарланы Керим</p><h1>Керим<br><span>Отаров</span><sup>1912<br>1974</sup></h1><p class="hero-intro">Поэзия, в которой живут<br>горы, время и человек.</p><a class="line-link hero-link" href="#/works">Открыть наследие <span>↗</span></a></div>
-        <div class="hero-poem" aria-live="polite"><span class="poem-overline">СТРОКИ, КОТОРЫЕ ОСТАЮТСЯ</span><blockquote id="hero-quote">«Я горд своей<br>дорогою земной…»</blockquote><div class="poem-nav"><div class="poem-dots" aria-label="Выбрать фрагмент"><button class="active" data-poem="0" aria-label="Фрагмент 1" aria-pressed="true"></button><button data-poem="1" aria-label="Фрагмент 2" aria-pressed="false"></button><button data-poem="2" aria-label="Фрагмент 3" aria-pressed="false"></button></div><span id="poem-number">01 — 03</span></div></div>
-        <div class="hero-bottom"><a href="#library" class="scroll-cue"><span class="scroll-track"></span> ЛИСТАЙТЕ, ЧТОБЫ УСЛЫШАТЬ</a><span class="hero-side-note">ЦИФРОВОЙ ЛИТЕРАТУРНЫЙ АРХИВ</span><button class="hero-sound" data-media="author"><svg viewBox="0 0 24 24"><path d="m5 10 4 0 5-4v12l-5-4H5zM18 8q5 4 0 8"/></svg><span>Голос поэта</span><span class="sound-line"></span></button></div>
-        <div class="hero-progress" aria-hidden="true"></div>
-      </div>
-    </section>
-
-
-    <section class="portal-home-index" aria-label="Разделы литературного портала">
-      <div class="portal-home-top"><span>ПОЗНАКОМЬТЕСЬ С НАСЛЕДИЕМ</span><span>ШЕСТЬ ГЛАВ О ЖИЗНИ И СЛОВЕ</span></div>
-      <h2>История, которую<br><em>продолжаем читать.</em></h2>
-      <div class="portal-home-grid">
-        <a href="#/life"><span>01 / ЧЕЛОВЕК</span><strong>Жизнь</strong><small>Биография · хронология · география</small><b aria-hidden="true">↗</b></a>
-        <a href="#/works"><span>02 / СЛОВО</span><strong>Творчество</strong><small>Стихи · сборники · переводы</small><b aria-hidden="true">↗</b></a>
-        <a href="#/media"><span>03 / ГОЛОС</span><strong>Медиа</strong><small>Фото · голос поэта · чтения</small><b aria-hidden="true">↗</b></a>
-        <a href="#/memory"><span>04 / ПАМЯТЬ</span><strong>Память</strong><small>Места · свидетельства · исследования</small><b aria-hidden="true">↗</b></a>
-        <a href="#/projects"><span>05 / БУДУЩЕЕ</span><strong>Проекты</strong><small>Словарь · параллельное чтение</small><b aria-hidden="true">↗</b></a>
-        <a href="#/events"><span>06 / ВСТРЕЧИ</span><strong>Афиша</strong><small>Календарь · мероприятия</small><b aria-hidden="true">↗</b></a>
-      </div>
-    </section>
-    <section class="library section-light" id="library">
-      <div class="section-meta reveal"><span class="eyebrow">01 / ЦИФРОВАЯ БИБЛИОТЕКА</span><span class="meta-note">СОХРАНЯТЬ. ЧИТАТЬ. ПЕРЕДАВАТЬ.</span></div>
-      <div class="section-heading reveal"><h2>У каждого слова —<br><em>своя вечность.</em></h2><p>Возвращайтесь к знакомым строкам.<br>Открывайте их на родном языке.<br> Находите в них себя.</p></div>
-      <div class="library-toolbar reveal"><div class="filter-tabs" role="group" aria-label="Жанр произведений"><button class="active" data-filter="all" aria-pressed="true">Всё наследие <sup>04</sup></button><button data-filter="poetry" aria-pressed="false">Поэзия</button><button data-filter="translation" aria-pressed="false">Переводы</button></div><label class="library-search"><svg viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/></svg><input id="library-search" type="search" placeholder="Найти произведение" aria-label="Найти произведение"></label></div>
-      <div class="library-grid">
-        <article class="book-card reveal" data-kind="poetry" data-title="Сокъур болур эдим Туугъан жерим родная земля"><button class="book-open" data-book="roads" aria-label="Открыть стихотворение Сокъур болур эдим"><div class="book-cover cover-roads"><span class="cover-author">ОТАРЛАНЫ КЕРИМ</span><span class="cover-title" lang="krc">Сокъур<br>болур<br><em>эдим</em></span><div class="road-art" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div><span class="cover-year">1955</span><span class="cover-open">Читать ↗</span></div><div class="book-meta"><span>СТИХОТВОРЕНИЕ · 1955</span><span>↗</span></div><h3>Сокъур болур эдим</h3><p>Оригинал · пояснительный подстрочник</p></button></article>
-        <article class="book-card reveal" data-kind="poetry" data-title="Родная земля Ата журт"><button class="book-open" data-book="land" aria-label="Открыть Родная земля"><div class="book-cover cover-land"><span class="cover-author">КЕРИМ ОТАРОВ</span><span class="cover-title">Родная<br><em>земля</em></span><svg class="mountain-art" viewBox="0 0 400 240" aria-hidden="true"><path d="m-30 250 180-220 70 105 43-55 165 170M-20 250 150 60l40 66 35-13 45 66 38-37 125 108M-20 250 155 95l18 66 32-7 58 68 35-25 74 53"/></svg><span class="cover-year">1960</span><span class="cover-open">Читать ↗</span></div><div class="book-meta"><span>ПОЭЗИЯ · 1960</span><span>↗</span></div><h3>Родная земля</h3><p>Поэзия о доме и памяти</p></button></article>
-        <article class="book-card reveal" data-kind="poetry" data-title="Моя утренняя звезда"><button class="book-open" data-book="star" aria-label="Открыть Моя утренняя звезда"><div class="book-cover cover-star"><span class="cover-author">КЕРИМ ОТАРОВ</span><div class="star-art" aria-hidden="true">✳</div><span class="cover-title">Моя утренняя<br><em>звезда</em></span><span class="cover-year">1969</span><span class="cover-open">Читать ↗</span></div><div class="book-meta"><span>ПОЭЗИЯ · 1969</span><span>↗</span></div><h3>Моя утренняя звезда</h3><p>Лирика · избранные произведения</p></button></article>
-        <article class="book-card reveal" data-kind="translation" data-title="Герой нашего времени Лермонтов"><button class="book-open" data-book="hero" aria-label="Открыть Герой нашего времени"><div class="book-cover cover-hero"><span class="cover-author">МИХАИЛ ЛЕРМОНТОВ</span><span class="cover-title">Герой<br>нашего<br><em>времени</em></span><span class="translation-stamp">ПЕРЕВОД<br>КЕРИМА ОТАРОВА</span><span class="cover-year">ПРОЗА</span><span class="cover-open">Читать ↗</span></div><div class="book-meta"><span>ПЕРЕВОД · ПРОЗА</span><span>↗</span></div><h3>Герой нашего времени</h3><p>М. Ю. Лермонтов · перевод</p></button></article>
-      </div><p class="empty-state" id="library-empty" hidden>Произведений с таким названием пока нет. Попробуйте другой запрос.</p>
-      <div class="library-foot"><span class="mini-symbol">✳</span><p>Не просто читать. <span>Понимать каждую строку.</span></p><button class="text-button" data-book="roads">Читать на двух языках <span>↗</span></button></div>
-    </section>
-
-    <section class="voice" id="voice"><div class="section-meta reveal"><span class="eyebrow">02 / ГОЛОС И ОБРАЗ</span><span class="meta-note">ЛИТЕРАТУРА, КОТОРАЯ ЗВУЧИТ</span></div><div class="voice-layout"><div class="voice-intro reveal"><span class="voice-label"><span class="live-dot"></span> АУДИОАРХИВ</span><h2>Услышать<br><em>самого поэта.</em></h2><p>В голосе остаётся то, чего не передать<br>буквами: пауза, дыхание, интонация.<br>И присутствие человека.</p><button class="round-link" data-media="author"><span class="round-play">▶</span><span>Авторское чтение<small>Раздел архивных записей</small></span><span class="round-arrow">↗</span></button></div><div class="voice-visual reveal"><span class="tape-label">ОТАРЛАНЫ КЕРИМ / ГОЛОС ВРЕМЕНИ</span><div class="tape"><div class="tape-reel"><i></i><i></i><i></i></div><div class="tape-path"></div><div class="tape-reel"><i></i><i></i><i></i></div></div><div class="waveform" aria-hidden="true"></div><div class="tape-caption"><span>ЖИВОЙ ГОЛОС. ЖИВАЯ ПАМЯТЬ.</span><span>01 / АРХИВ</span></div></div></div><div class="media-rows reveal"><button data-media="readers"><span class="media-number">01</span><span class="media-row-title">Современные прочтения<small>Новые голоса знакомых стихов</small></span><span class="media-type">АУДИОБИБЛИОТЕКА</span><span>↗</span></button><button data-media="video"><span class="media-number">02</span><span class="media-row-title">Поэт в кадре<small>Фильмы, встречи и воспоминания</small></span><span class="media-type">ВИДЕОБИБЛИОТЕКА</span><span>↗</span></button></div></section>
-
-    <section class="about section-light" id="about"><div class="section-meta reveal"><span class="eyebrow">03 / ЧЕЛОВЕК ЗА СТРОКАМИ</span><span class="meta-note">1912 — 1974</span></div><div class="about-layout"><div class="about-photo reveal"><img src="./assets/otarov-portrait-kbp.jpg" alt="Керим Сарамурзаевич Отаров" loading="lazy"><span>КЕРИМ САРАМУРЗАЕВИЧ ОТАРОВ</span></div><div class="about-story reveal"><span class="eyebrow">ПОЭТ. ПЕРЕВОДЧИК. ЧЕЛОВЕК.</span><h2>Судьба народа.<br><em>Голос человека.</em></h2><p>Рождённый в горном ауле Гюрхожан, Керим Отаров прошёл через войну, изгнание и возвращение. Его поэзия сохранила память о времени — и веру в человека.</p><p class="about-secondary">Родной язык, фольклор и мировая литература встречаются в его произведениях. Этот архив — пространство, где знакомство с поэтом становится личным.</p><div class="timeline-controls" role="group" aria-label="Периоды жизни"><button class="active" data-year="1912" aria-pressed="true">1912</button><button data-year="1938" aria-pressed="false">1938</button><button data-year="1944" aria-pressed="false">1944</button><button data-year="1956" aria-pressed="false">1956</button></div><div class="timeline-detail" aria-live="polite"><span id="timeline-year">1912</span><p id="timeline-text">Начало пути. Родился в балкарском ауле Гюрхожан у подножия Эльбруса.</p></div></div></div></section>
-
-    <section class="dictionary" id="dictionary"><div class="dictionary-top reveal"><span class="eyebrow">04 / ЯЗЫК ПОЭЗИИ</span><a href="#/works" class="text-button">Вернуться к строкам ↗</a></div><div class="dictionary-layout reveal"><div><h2>За словом —<br><em>целый мир.</em></h2><p>Прикоснитесь к родному языку.<br>Выберите слово и откройте его смысл.</p></div><div class="word-card"><span class="word-card-label">МАЛЕНЬКИЙ СЛОВАРЬ БОЛЬШИХ ЧУВСТВ</span><div class="word-head"><h3 id="word-title" lang="krc">Тау</h3><span id="word-index">01 / 05</span></div><p class="word-translation" id="word-translation">Гора</p><p class="word-description" id="word-description">Слово, с которого начинается знакомство с горным миром карачаево-балкарского языка.</p><div class="word-choices" role="group" aria-label="Слова словаря"><button data-word="0" class="active" aria-pressed="true">Тау</button><button data-word="1" aria-pressed="false">Жюрек</button><button data-word="2" aria-pressed="false">Жол</button><button data-word="3" aria-pressed="false">Тил</button><button data-word="4" aria-pressed="false">Жарыкъ</button></div></div></div></section>
-
-    <section class="events section-light" id="events"><div class="section-meta reveal"><span class="eyebrow">05 / ВСТРЕЧИ ВОКРУГ СЛОВА</span><span class="meta-note">ПАМЯТЬ ПРОДОЛЖАЕТСЯ ВО ВСТРЕЧАХ</span></div><div class="events-heading reveal"><h2>Поэзия<br><em>объединяет.</em></h2><div class="month-controls"><button id="month-prev" aria-label="Предыдущий месяц">←</button><span id="month-label">Ноябрь 2026</span><button id="month-next" aria-label="Следующий месяц">→</button></div></div><p class="demo-note">Демонстрационные примеры · не являются анонсами</p><div id="events-list" class="events-list reveal"></div><div class="events-empty" id="events-empty" hidden>В этом месяце встречи пока не запланированы.<button class="text-button" id="events-reset">К примерам событий ↗</button></div></section>
-
-    <section class="closing"><span class="eyebrow">НАСЛЕДИЕ ЖИВЁТ, КОГДА ЕГО ЧИТАЮТ</span><p>Продолжение —<br><em>в каждой новой встрече.</em></p><a href="#/works" class="closing-link">Открыть книгу <span>↗</span></a><span class="closing-flower" aria-hidden="true">✳</span></section>
-  </main>
-  <footer><a class="footer-name" href="#/">Отарланы Керим<span>Керим Отаров · 1912–1974</span></a><div class="footer-links"><button id="sources-open">Об архиве и источниках ↗</button><a href="#/">Наверх ↑</a></div><div class="footer-bottom"><span>ЖИВОЕ СЛОВО / ЛИТЕРАТУРНОЕ НАСЛЕДИЕ</span><span>Керим Отаров · 2026</span></div></footer>
-  <dialog id="reader" class="reader-dialog"><div class="reader-top"><a class="reader-brand" href="#library">К / О <span>ЦИФРОВАЯ БИБЛИОТЕКА</span></a><button class="close-dialog icon-button" aria-label="Закрыть чтение">✕</button></div><div class="reader-body"><p class="eyebrow" id="reader-eyebrow">КЕРИМ ОТАРОВ / ПОЭЗИЯ</p><h2 id="reader-title">Дороги</h2><p class="reader-subtitle" id="reader-subtitle"></p><div class="reader-tools"><button id="parallel-toggle" aria-pressed="false">Параллельный текст <span>⇄</span></button><button id="notes-toggle" aria-pressed="true">Пояснения <span>＋</span></button><button id="reader-save" aria-pressed="false">Сохранить <span>♧</span></button></div><div class="reading-layout"><div class="reading-text"><div class="original-column" hidden></div><div class="translation-column"><span class="eyebrow" id="reading-language">РУССКИЙ ТЕКСТ</span><div class="poem-text" id="reading-poem"></div><p class="excerpt-note" id="reader-note"></p><a id="reader-source" class="text-button" target="_blank" rel="noopener">Читать в источнике ↗</a></div></div><aside class="reader-notes" id="reader-notes"><span class="eyebrow">НА ПОЛЯХ</span><h3>За каждой строкой — время</h3><p id="context-note"></p><div class="comments"><h4>Ваше прочтение</h4><p>Заметки сохраняются в этом браузере.</p><div id="saved-comments"></div><form id="comment-form"><label for="comment-text">Что отозвалось в этих строках?</label><textarea id="comment-text" rows="3" maxlength="600" placeholder="Оставьте свою заметку…" required></textarea><button class="solid-button" type="submit">Сохранить заметку ↗</button></form></div></aside></div></div></dialog>
-  <dialog id="info-dialog" class="info-dialog"><button class="close-dialog icon-button" aria-label="Закрыть окно">✕</button><div id="info-content"></div></dialog>
-  <div class="toast" id="toast" role="status"></div>
-</body></html>
+<a class="skip" href="#main">К содержанию</a>
+<header class="topbar" id="topbar">
+  <a class="brand" href="#/" aria-label="Керим Отаров — главная"><span class="brand-symbol">К<span>О</span></span><span class="brand-name">КЕРИМ ОТАРОВ<small>ЛИТЕРАТУРНОЕ НАСЛЕДИЕ</small></span></a>
+  <nav class="toplinks" aria-label="Главные разделы"><a href="#/life" data-nav="life">Жизнь</a><a href="#/works" data-nav="works">Произведения</a><a href="#/media" data-nav="media">Архив</a></nav>
+  <div class="top-actions">
+    <button type="button" class="round-icon top-search" data-action="search" aria-label="Поиск" title="Поиск (Ctrl+K)">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.7" cy="10.7" r="6.6"/><path d="m15.8 15.8 5 5"/></svg>
+    </button>
+    <button type="button" class="menu-trigger" id="menu-trigger" data-action="menu" aria-label="Открыть меню" aria-expanded="false" aria-controls="site-menu">
+      <span class="menu-label">МЕНЮ</span>
+      <span class="menu-mark round-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path class="line-top" d="M4 9H20"/><path class="line-bottom" d="M4 15H20"/></svg></span>
+    </button>
+  </div>
+</header>
+<div id="site-menu" class="site-menu" aria-hidden="true" inert>
+  <div class="menu-art" aria-hidden="true"><img src="./assets/otarov-portrait-kbp.jpg" alt=""></div>
+  <div class="menu-inner">
+    <p class="menu-kicker">КЕРИМ ОТАРОВ / СОДЕРЖАНИЕ</p>
+    <nav class="menu-list" aria-label="Все разделы">
+      <a href="#/life" data-link="life"><span>01</span><strong>Жизнь</strong><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 19 19 5M8 5h11v11"/></svg></a>
+      <a href="#/works" data-link="works"><span>02</span><strong>Творчество</strong><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 19 19 5M8 5h11v11"/></svg></a>
+      <a href="#/media" data-link="media"><span>03</span><strong>Медиа</strong><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 19 19 5M8 5h11v11"/></svg></a>
+      <a href="#/memory" data-link="memory"><span>04</span><strong>Память</strong><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 19 19 5M8 5h11v11"/></svg></a>
+      <a href="#/projects" data-link="projects"><span>05</span><strong>Проекты</strong><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 19 19 5M8 5h11v11"/></svg></a>
+      <a href="#/events" data-link="events"><span>06</span><strong>Афиша</strong><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 19 19 5M8 5h11v11"/></svg></a>
+    </nav>
+    <p class="menu-foot">ОТАРЛАНЫ КЕРИМ · 1912—1974</p>
+  </div>
+</div>
+<div id="search-panel" class="search-panel" aria-hidden="true" inert>
+  <div class="search-card" role="dialog" aria-modal="true" aria-label="Поиск по литературному порталу">
+    <div class="search-top"><span>ПОИСК ПО НАСЛЕДИЮ</span><button type="button" class="round-icon" data-action="close-search" aria-label="Закрыть поиск"><svg viewBox="0 0 24 24"><path d="M5 5l14 14M19 5 5 19"/></svg></button></div>
+    <label class="visually-hidden" for="global-search">Поиск</label>
+    <input id="global-search" type="search" placeholder="Произведение, тема, имя…" autocomplete="off">
+    <div id="search-results" class="search-results" aria-live="polite"></div>
+    <p class="search-hint">ESC — ЗАКРЫТЬ · ENTER — ПЕРЕЙТИ</p>
+  </div>
+</div>
+<main id="main" tabindex="-1"></main>
+<footer class="site-footer">
+  <a href="#/" class="footer-home">Отарланы Керим</a>
+  <span>Слово, которое остаётся.</span>
+  <button type="button" class="footer-source" data-action="sources">Об источниках</button>
+</footer>
+<div class="status-toast" id="status-toast" role="status" aria-live="polite"></div>
+</body>
+</html>
