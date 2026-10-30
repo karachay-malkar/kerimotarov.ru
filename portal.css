@@ -360,3 +360,9 @@ a:hover>.portal-arrow,.portal-chapter:hover .portal-arrow{transform:translate(4p
 .portal-home-grid a:hover b{transform:translate(5px,-5px) rotate(12deg);border-color:#b9a98a}
 @media(max-width:1000px){.portal-home-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.portal-home-grid a{min-height:265px}}
 @media(max-width:600px){.portal-home-index{padding:66px 6%}.portal-home-top{font-size:8px}.portal-home-top span:last-child{display:none}.portal-home-index h2{font-size:clamp(50px,12vw,75px);margin:50px 0 45px}.portal-home-grid a{min-height:205px;padding:22px 14px}.portal-home-grid strong{font-size:clamp(33px,8.5vw,50px);overflow-wrap:anywhere}.portal-home-grid small{font-size:9px}.portal-home-grid b{right:13px;top:13px;width:29px;height:29px;font-size:19px}.portal-home-grid a>span{font-size:8px;max-width:110px}}
+
+/* Four sourced publications and family archival note */
+.portal-family-footnote{margin-top:35px;opacity:.8;font-size:11px!important}
+.portal-publication-list{grid-template-columns:repeat(4,minmax(0,1fr))}
+@media(max-width:1080px){.portal-publication-list{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:650px){.portal-publication-list{grid-template-columns:1fr}}
