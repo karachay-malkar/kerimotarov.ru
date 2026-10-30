@@ -58,7 +58,7 @@ test('menu, all categories and browser history', async ({page,isMobile}) => {
   await expect(page).toHaveURL(/#\/memory$/);
   await expect(page.locator('#mobile-nav')).not.toHaveClass(/open/);
   await page.locator('.portal-chapter[href="#/memory/publications"]').click();
-  await expect(page.locator('.portal-publication-list article')).toHaveCount(3);
+  await expect(page.locator('.portal-publication-list article')).toHaveCount(4);
   await page.goBack();
   await expect(page.locator('.portal-memory-quote')).toBeVisible();
   for (const section of ['life','works','media','memory','projects','events']) {
