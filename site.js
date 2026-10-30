@@ -44,27 +44,20 @@ const words=[
  ['Жарыкъ','Свет, светлый','Значение зависит от контекста.']
 ];
 const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-const paths={
- arrow:'<path d="M5 19 19 5M8 5h11v11"/>',
- right:'<path d="M4 12h16m-6-6 6 6-6 6"/>',
- left:'<path d="M20 12H4m6-6-6 6 6 6"/>',
- chevron:'<path d="m9 5 7 7-7 7"/>',
- book:'<path d="M12 6.5c-3-2-6-2.3-9-1.5v13c3-.8 6-.5 9 1.5 3-2 6-2.3 9-1.5V5c-3-.8-6-.5-9 1.5Zm0 0v13"/>',
- sound:'<path d="M11 5 6 9H3v6h3l5 4V5Zm4 4a5 5 0 0 1 0 6m3-9a9 9 0 0 1 0 12"/>',
- headphones:'<path d="M4 14v-3a8 8 0 0 1 16 0v3M4 14v5h4v-6H4m16 1v5h-4v-6h4"/>',
- image:'<rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8" cy="8" r="1.5"/><path d="m21 16-6-6-9 9"/>',
- film:'<rect x="3" y="4" width="18" height="16" rx="2"/><path d="M7 4v16M17 4v16M3 9h4M3 15h4m10-6h4m-4 6h4"/>',
- pin:'<path d="M19 10c0 5-7 11-7 11S5 15 5 10a7 7 0 1 1 14 0Z"/><circle cx="12" cy="10" r="2"/>',
- layers:'<path d="m12 3 9 5-9 5-9-5 9-5Zm-9 10 9 5 9-5M3 18l9 5 9-5"/>',
- calendar:'<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M7 3v4m10-4v4M3 10h18"/>',
- bookmark:'<path d="M6 4h12v17l-6-4-6 4V4Z"/>',
- check:'<path d="m4 12 5 5L20 6"/>',
- close:'<path d="M5 5 19 19M19 5 5 19"/>',
- search:'<circle cx="10.7" cy="10.7" r="6.6"/><path d="m15.8 15.8 5 5"/>',
- clock:'<circle cx="12" cy="12" r="9"/><path d="M12 7v6l4 2"/>',
- quote:'<path d="M10 5C6 7 5 10 5 15h5v5H3v-5c0-7 3-10 7-12Zm11 0c-4 2-5 5-5 10h5v5h-7v-5c0-7 3-10 7-12Z"/>'
+// Official Lucide SVG symbols are vendored in assets/lucide-sprite.svg (ISC).
+// No hand-drawn icon paths and no runtime CDN dependency.
+const iconNames={
+ arrow:'arrow-up-right',right:'arrow-right',left:'arrow-left',
+ chevron:'chevron-right',book:'book-open',sound:'volume-2',
+ headphones:'headphones',image:'image',film:'film',pin:'map-pin',
+ layers:'layers',calendar:'calendar-days',bookmark:'bookmark',
+ check:'check',close:'x',search:'search',menu:'menu',
+ clock:'clock-3',quote:'quote',feather:'feather'
 };
-const ico=(name,cls='')=>'<svg class="icon '+cls+'" viewBox="0 0 24 24" focusable="false" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.45" stroke-linecap="round" stroke-linejoin="round">'+(paths[name]||paths.arrow)+'</svg>';
+const ico=(name,cls='')=>{
+ const symbol=iconNames[name]||iconNames.arrow;
+ return '<svg class="icon '+cls+'" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="./assets/lucide-sprite.svg#'+symbol+'"></use></svg>';
+};
 const action=(href,label,className='under-link')=>'<a class="'+className+'" href="#/'+href+'">'+esc(label)+ico('arrow')+'</a>';
 const circle=(href,label,extra='')=>'<a href="#/'+href+'" class="round-icon '+extra+'" aria-label="'+esc(label)+'" title="'+esc(label)+'" data-magnetic>'+ico('arrow')+'</a>';
 const source=(url,text)=>'<a href="'+url+'" target="_blank" rel="noopener noreferrer" class="source-link">'+esc(text)+ico('arrow')+'</a>';
@@ -281,7 +274,7 @@ function paint(force=false){
  document.title=(sections.find(s=>s.key===key)?.name||'Керим Отаров')+' — литературное наследие';
  $$('[data-nav]').forEach(a=>a.setAttribute('aria-current',a.dataset.nav===key?'page':'false'));
  $('#topbar').classList.toggle('on-light',!!key && key!=='home');
- updateReader();updateMonth();bindVisuals();
+ updateReader();updateMonth();bindVisuals();updateSceneProgress();
  main.focus({preventScroll:true});
  if(!location.hash.match(/^#(home|library|about|dictionary|voice)$/))scrollTo({top:0,behavior:'instant'});
 }
@@ -300,6 +293,7 @@ function openPath(href,origin){
  }
 }
 function closeMenu(){
+ const symbol=$('#menu-trigger use');if(symbol)symbol.setAttribute('href','./assets/lucide-sprite.svg#menu');
  menu.classList.remove('is-open');menu.setAttribute('aria-hidden','true');menu.inert=true;
  trigger.setAttribute('aria-expanded','false');trigger.setAttribute('aria-label','Открыть меню');
  document.body.classList.remove('menu-open');
@@ -307,6 +301,7 @@ function closeMenu(){
 function toggleMenu(){
  if(menu.classList.contains('is-open')){closeMenu();return;}
  closeSearch();menu.inert=false;menu.setAttribute('aria-hidden','false');menu.classList.add('is-open');
+ const symbol=$('#menu-trigger use');if(symbol)symbol.setAttribute('href','./assets/lucide-sprite.svg#x');
  trigger.setAttribute('aria-expanded','true');trigger.setAttribute('aria-label','Закрыть меню');
  document.body.classList.add('menu-open');
  $('.menu-list a',menu).focus();
@@ -344,6 +339,8 @@ function filterWorks(){
  if($('#works-empty'))$('#works-empty').hidden=n>0;
 }
 function bindVisuals(){
+ const hero=$('.hero');
+ if(hero && reduce.matches)hero.classList.add('motion-reduced');
  if(fine.matches&&!reduce.matches){
    $$('[data-magnetic]').forEach(el=>{
      el.addEventListener('pointermove',e=>{
@@ -354,16 +351,39 @@ function bindVisuals(){
      },{passive:true});
      el.addEventListener('pointerleave',()=>el.style.removeProperty('transform'));
    });
-   const hero=$('.hero');
-   if(hero)hero.addEventListener('pointermove',e=>{
-     const r=hero.getBoundingClientRect();const x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;
-     hero.style.setProperty('--mx',(x*22).toFixed(1)+'px');hero.style.setProperty('--my',(y*18).toFixed(1)+'px');
-     hero.style.setProperty('--light-x',Math.round((x+.5)*100)+'%');hero.style.setProperty('--light-y',Math.round((y+.5)*100)+'%');
-   },{passive:true});
+   // Lusion v3-inspired inertia, adapted to a restrained archival portrait.
+   // A damped spring keeps the photo moving briefly after the pointer stops.
+   if(hero){
+     const target={x:0,y:0},position={x:0,y:0},velocity={x:0,y:0};
+     let ticking=false;
+     const tick=()=>{
+       if(!hero.isConnected){ticking=false;return;}
+       velocity.x=(velocity.x+(target.x-position.x)*.08)*.72;
+       velocity.y=(velocity.y+(target.y-position.y)*.08)*.72;
+       position.x+=velocity.x;position.y+=velocity.y;
+       hero.style.setProperty('--mx',position.x.toFixed(2)+'px');
+       hero.style.setProperty('--my',position.y.toFixed(2)+'px');
+       const unsettled=Math.abs(velocity.x)+Math.abs(velocity.y)+Math.abs(target.x-position.x)+Math.abs(target.y-position.y)>.09;
+       if(unsettled)requestAnimationFrame(tick);else ticking=false;
+     };
+     const start=()=>{if(!ticking){ticking=true;requestAnimationFrame(tick);}};
+     hero.addEventListener('pointermove',e=>{
+       const rect=hero.getBoundingClientRect();
+       const x=(e.clientX-rect.left)/rect.width-.5;
+       const y=(e.clientY-rect.top)/rect.height-.5;
+       target.x=x*24;target.y=y*18;
+       hero.style.setProperty('--light-x',Math.round((x+.5)*100)+'%');
+       hero.style.setProperty('--light-y',Math.round((y+.5)*100)+'%');
+       start();
+     },{passive:true});
+     hero.addEventListener('pointerleave',()=>{target.x=0;target.y=0;start();});
+   }
    $$('.work-card').forEach(el=>{
      el.addEventListener('pointermove',e=>{
        const r=el.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;
        el.style.setProperty('--rot-x',(-y*5).toFixed(2)+'deg');el.style.setProperty('--rot-y',(x*6).toFixed(2)+'deg');
+       el.style.setProperty('--glow-x',Math.round((x+.5)*100)+'%');
+       el.style.setProperty('--glow-y',Math.round((y+.5)*100)+'%');
      },{passive:true});
      el.addEventListener('pointerleave',()=>{el.style.setProperty('--rot-x','0deg');el.style.setProperty('--rot-y','0deg');});
    });
@@ -376,6 +396,36 @@ function bindVisuals(){
    if(!observer||reduce.matches)el.classList.add('in');else observer.observe(el);
  });
 }
+// A one-pixel editorial progress indicator and a depth-aware hero camera.
+// Scroll updates are rAF-throttled and never block native scrolling.
+const progressBar=$('.scene-progress');
+function updateSceneProgress(){
+ if(!progressBar)return;
+ const max=Math.max(0,document.documentElement.scrollHeight-innerHeight);
+ const progress=max?Math.max(0,Math.min(1,scrollY/max)):0;
+ progressBar.style.transform='scaleX('+progress.toFixed(4)+')';
+ const hero=$('.hero');
+ if(hero&&!reduce.matches){
+   const depth=Math.max(0,Math.min(1,scrollY/Math.max(1,innerHeight)));
+   hero.style.setProperty('--depth-scale',(1+depth*.14).toFixed(3));
+   hero.style.setProperty('--scroll-lift',(-depth*35).toFixed(1)+'px');
+   hero.style.setProperty('--title-shift',(-depth*17).toFixed(1)+'px');
+ }
+}
+let progressTick=false;
+addEventListener('scroll',()=>{
+ if(progressTick)return;
+ progressTick=true;
+ requestAnimationFrame(()=>{progressTick=false;updateSceneProgress();});
+},{passive:true});
+addEventListener('resize',updateSceneProgress,{passive:true});
+$$('#site-menu .menu-list a').forEach((link,index)=>{
+ link.addEventListener('pointerenter',()=>{
+   const label=$('#menu-chapter-number');
+   if(label)label.textContent=String(index+1).padStart(2,'0');
+   menu.style.setProperty('--menu-depth',((index-2.5)*-9)+'px');
+ },{passive:true});
+});
 document.addEventListener('click',e=>{
  const anchor=e.target.closest('a[href^="#/"]');
  if(anchor){
